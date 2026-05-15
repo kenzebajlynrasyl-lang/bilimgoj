@@ -109,17 +109,25 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .photo-container {
-            float: left;
-            margin-right: 20px;
-            margin-bottom: 10px;
-        }
+        .photo-container img {
+    width: 170px;
+    height: auto;
+    border-radius: 12px;
+    border: 3px solid rgb(59, 130, 246);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
+       .photo-container img {
+    width: 170px;
+    height: 190px;
+    border-radius: 8px;
+    border: 3px solid rgb(59, 130, 246);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+object-fit: cover;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 10px; }
+        
 
         table {
             width: 100%;
@@ -223,26 +231,27 @@
         </div>
     </header>
 
-    <section id="overview" class="clearfix">
+    <section id="overview">
         <h2 id="club-title">KarBIl got Talents</h2>
         
         <div class="photo-container">
-            <a href="https://ibb.co.com/P8LNrjh"><img src="https://i.ibb.co.com/W1h6H5y/photo-5301152686508021227-w-1.jpg" alt="photo-5301152686508021227-w-1" border="0" height="300px"/></a>
+            <a href="https://ibb.co.com/P8LNrjh"><img src="https://i.ibb.co.com/W1h6H5y/photo-5301152686508021227-w-1.jpg" alt="photo-5301152686508021227-w-1" border="0" /></a>
         </div>
 
         <p>
             This system helps football managers track youth prospects between the ages of 6 and 15. Enter your configuration name below to initialize the tracking dashboard session.
         </p>
 
+        <br clear="all">
         <hr style="border:0; border-top:1px solid rgb(226, 232, 240); margin:20px 0;">
 
         <div>Manager Target Name:</div>
         <input type="text" id="username" placeholder="Enter your name (e.g., Ulan)">
         
-        <button class="btn-green" onclick="updateGreeting()">Authorize Login</button>
+        <button class="btn-green" onclick="login()">Authorize Login</button>
         <button class="btn-purple" onclick="toggleTheme()">Toggle Dark Mode</button>
         
-        <button class="btn-blue" onclick="document.getElementById('club-title').innerHTML = 'Manager profile'">Content austyru</button>
+        <button class="btn-blue" onclick="document.getElementById('club-title').innerHTML = 'Coach profile'">Content austyru</button>
         <button class="btn-blue" onclick="document.getElementById('hidden-content').style.display = 'block'">Show Hidden Content</button>
         <button class="btn-blue" onclick="window.alert('Here is the information about club talent database 2026')">JS tereze</button>
 
@@ -252,7 +261,7 @@
     </section>
 
     <section id="database">
-        <h2>Top Players</h2>
+        <h2>Top Prospects</h2>
         <table>
             <thead>
                 <tr>
@@ -264,7 +273,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>#01</td><td>Ibraimkhan Alikhan</td><td>14</td><td>Forward</td><td>9.2</td></tr>
+                 <tr><td>#01</td><td>Ibraimkhan Alikhan</td><td>14</td><td>Forward</td><td>9.2</td></tr>
                 <tr class="bg-light"><td>#02</td><td>Tansykkozhin Murat</td><td>14</td><td>Midfielder</td><td>8.9</td></tr>
                 <tr><td>#03</td><td>Kazna Islam</td><td>11</td><td>Winger</td><td>9.5</td></tr>
                 <tr class="bg-light"><td>#04</td><td>Chika Saturo</td><td>6</td><td>Forward</td><td>8.6</td></tr>
@@ -280,11 +289,11 @@
 
     <section id="request">
         <h2>Quick Contact</h2>
-        <form onsubmit="event.preventDefault(); alert('Email successfully sent to the Football Club registry!');">
+        <form>
             <div>Your Email Address:</div>
             <input type="email" id="email" placeholder="manager@club.com" required>
             
-            <button type="submit" name="send" class="btn-send">Send</button>
+            <button type="button" onclick="alert('Email successfully sent to the Football Club registry!')" class="btn-send">Send</button>
         </form>
     </section>
 
@@ -293,11 +302,11 @@
     </footer>
 
     <script>
-        function updateGreeting() {
+        function login() {
             let nameInput = document.getElementById('username').value;
             let greetingHeading = document.getElementById('main-greeting');
             
-            if (nameInput.trim() !== "") {
+            if (nameInput != "") {
                 greetingHeading.textContent = "You are welcome " + nameInput + " to our football club.";
             } else {
                 greetingHeading.textContent = "You are welcome Guest to our football club.";
