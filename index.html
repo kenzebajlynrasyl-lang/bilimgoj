@@ -1,48 +1,312 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Spin-off of "Project: Rasul abi invitation"</title>
-        <style>
-        #konec {
-            
-            font-size:16 px;
-            margin-left:110 px;
-            margin-bottom:2 px;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScoutPro // Youth Talent Database</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: rgb(44, 62, 80);
+            background-color: rgb(240, 243, 245);
+            transition: background-color 0.3s, color 0.3s;
         }
-            #forse{
-                color:grey;
-                width:3 px;
-                height:6 px;
-                z-index:1;
-                
-            }
-            .john{
-                background-color:yellow;
-                overflow:auto;
-            }
-            #hey{
-                position:relative;
-                bottom:12 px;
-            }
+
+        body.dark-theme {
+            background-color: rgb(18, 24, 36);
+            color: rgb(226, 232, 240);
+        }
+        
+        body.dark-theme section {
+            background-color: rgb(30, 41, 59);
+            color: rgb(255, 255, 255);
+        }
+
+        body.dark-theme footer {
+            background-color: rgb(30, 41, 59);
+            color: rgb(255, 255, 255);
+        }
+
+        body.dark-theme header {
+            background-color: rgb(30, 41, 59);
+            color: rgb(255, 255, 255);
+        }
+
+        body.dark-theme td {
+            border-color: rgb(51, 65, 85);
+            color: rgb(226, 232, 240);
+        }
+
+        body.dark-theme th {
+            border-color: rgb(51, 65, 85);
+            color: rgb(226, 232, 240);
+        }
+
+        body.dark-theme tr.bg-light {
+            background-color: rgb(58, 58, 58);
+        }
+
+        body.dark-theme h2 {
+            color: rgb(96, 165, 250);
+            border-bottom-color: rgb(30, 41, 59);
+        }
+
+        h1 { 
+            font-size: 36px; 
+            margin-bottom: 5px; 
+        }
+        
+        h2 { 
+            font-size: 28px; 
+            font-style: italic; 
+            color: rgb(30, 58, 138); 
+            border-bottom: 2px solid rgb(59, 130, 246); 
+            padding-bottom: 5px; 
+        }
+
+        header {
+            background-color: rgb(30, 58, 138);
+            color: rgb(255, 255, 255);
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .live-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgb(239, 68, 116);
+            color: rgb(255, 255, 255);
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .menu-links a {
+            color: rgb(147, 197, 253);
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .menu-links a:hover { 
+            color: rgb(255, 255, 255); 
+        }
+
+        section {
+            background-color: rgb(255, 255, 255);
+            width: 85%;
+            max-width: 900px;
+            margin: 25px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .photo-container {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid rgb(226, 232, 240);
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th { 
+            background-color: rgb(37, 99, 235); 
+            color: rgb(255, 255, 255); 
+        }
+        
+        tr.bg-light { 
+            background-color: rgb(248, 250, 252); 
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px 0;
+            box-sizing: border-box;
+            border: 1.5px solid rgb(203, 213, 225);
+            border-radius: 6px;
+        }
+
+        button {
+            color: rgb(255, 255, 255);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px; 
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 5px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+
+        .btn-green { 
+            background-color: rgb(16, 185, 129); 
+        }
+        
+        .btn-green:hover { 
+            background-color: rgb(5, 150, 105); 
+        }
+
+        .btn-blue { 
+            background-color: rgb(59, 130, 246); 
+        }
+        
+        .btn-blue:hover { 
+            background-color: rgb(37, 99, 235); 
+        }
+
+        .btn-purple { 
+            background-color: rgb(99, 102, 241); 
+        }
+        
+        .btn-purple:hover { 
+            background-color: rgb(79, 70, 229); 
+        }
+
+        .btn-send {
+            background-color: rgb(230, 126, 34); 
+            display: inline-block;
+        }
+        
+        .btn-send:hover {
+            background-color: rgb(211, 84, 0);
+        }
+
+        #hidden-content {
+            display: none;
+            margin-top: 15px;
+        }
+
+        footer {
+            background-color: rgb(15, 23, 42);
+            color: rgb(148, 163, 184);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="live-badge">U6-U15</div>
+        <h1 id="main-greeting">Scouting Dashboard</h1>
+        <div class="menu-links">
+            <a href="#overview">Overview</a>
+            <a href="#database">Database</a>
+            <a href="#request">Contact</a>
+        </div>
+    </header>
+
+    <section id="overview" class="clearfix">
+        <h2 id="club-title">KarBIl got Talents</h2>
+        
+        <div class="photo-container">
+            <a href="https://ibb.co.com/P8LNrjh"><img src="https://i.ibb.co.com/W1h6H5y/photo-5301152686508021227-w-1.jpg" alt="photo-5301152686508021227-w-1" border="0" height="300px"/></a>
+        </div>
+
+        <p>
+            This system helps football managers track youth prospects between the ages of 6 and 15. Enter your configuration name below to initialize the tracking dashboard session.
+        </p>
+
+        <hr style="border:0; border-top:1px solid rgb(226, 232, 240); margin:20px 0;">
+
+        <div>Manager Target Name:</div>
+        <input type="text" id="username" placeholder="Enter your name (e.g., Ulan)">
+        
+        <button class="btn-green" onclick="updateGreeting()">Authorize Login</button>
+        <button class="btn-purple" onclick="toggleTheme()">Toggle Dark Mode</button>
+        
+        <button class="btn-blue" onclick="document.getElementById('club-title').innerHTML = 'Manager profile'">Content austyru</button>
+        <button class="btn-blue" onclick="document.getElementById('hidden-content').style.display = 'block'">Show Hidden Content</button>
+        <button class="btn-blue" onclick="window.alert('Here is the information about club talent database 2026')">JS tereze</button>
+
+        <div id="hidden-content">
+            <h2>If You read this, congratulations!!! You win 5000$</h2>
+        </div>
+    </section>
+
+    <section id="database">
+        <h2>Top Players</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Player Name</th>
+                    <th>Age</th>
+                    <th>Position</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>#01</td><td>Ibraimkhan Alikhan</td><td>14</td><td>Forward</td><td>9.2</td></tr>
+                <tr class="bg-light"><td>#02</td><td>Tansykkozhin Murat</td><td>14</td><td>Midfielder</td><td>8.9</td></tr>
+                <tr><td>#03</td><td>Kazna Islam</td><td>11</td><td>Winger</td><td>9.5</td></tr>
+                <tr class="bg-light"><td>#04</td><td>Chika Saturo</td><td>6</td><td>Forward</td><td>8.6</td></tr>
+                <tr><td>#05</td><td>Onal Yerqanat</td><td>15</td><td>Defender</td><td>9.0</td></tr>
+                <tr class="bg-light"><td>#06</td><td>Abdulsamat Jr</td><td>12</td><td>Midfielder</td><td>8.8</td></tr>
+                <tr><td>#07</td><td>Beka Aqtobe</td><td>9</td><td>Forward</td><td>8.7</td></tr>
+                <tr class="bg-light"><td>#08</td><td>Daniyal Respa</td><td>13</td><td>Goalkeeper</td><td>8.5</td></tr>
+                <tr><td>#09</td><td>Ako Kidala</td><td>10</td><td>Defender</td><td>8.4</td></tr>
+                <tr class="bg-light"><td>#10</td><td>Kenzhe Islam</td><td>15</td><td>Winger</td><td>9.1</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="request">
+        <h2>Quick Contact</h2>
+        <form onsubmit="event.preventDefault(); alert('Email successfully sent to the Football Club registry!');">
+            <div>Your Email Address:</div>
+            <input type="email" id="email" placeholder="manager@club.com" required>
             
-        </style>
-    </head>
-    <body>
-     <div class = "john">   
-       <span id = "forse"> <h1>You're invited!</h1></span>
-        <h2>To KTL league closing ceremony</h2>
-        
-        <p>The details:</p>
-        <ul id = "hey">
-            <li>Starts at 16:30, 10.05.2026</li>
-             <li>Keep the dresscode</li>
-              <li>At act hall</li>
-               <li>Seat B17 </li>
-        </ul>
-              <h3 id = "konec">
-                  Sincerely,Sport minister of BIL №1
-              </h3></div>                
-        
-    </body>
+            <button type="submit" name="send" class="btn-send">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 KARBIL Scout organisation by Mr.Nurasyl</p>
+    </footer>
+
+    <script>
+        function updateGreeting() {
+            let nameInput = document.getElementById('username').value;
+            let greetingHeading = document.getElementById('main-greeting');
+            
+            if (nameInput.trim() !== "") {
+                greetingHeading.textContent = "You are welcome " + nameInput + " to our football club.";
+            } else {
+                greetingHeading.textContent = "You are welcome Guest to our football club.";
+            }
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+    </script>
+</body>
 </html>
